@@ -73,6 +73,23 @@ public class ContactBook {
         return result;
     }
 
+    public boolean searchSamePhones() {
+        boolean found = false;
+        int i = 0;
+        while (i < counter-1 && !found ) {
+            int number = contacts[i].getPhone();
+            for (int j = i+1; j < counter; j++ ) {
+                int number2 = contacts[j].getPhone();
+                if (number == number2) {
+                    found = true;
+                    break;
+                }
+            }
+            i++;
+        }
+        return found;
+    }
+
     private void resize() {
         Contact tmp[] = new Contact[2*contacts.length];
         for (int i=0;i<counter; i++)
