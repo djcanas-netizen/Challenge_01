@@ -80,6 +80,15 @@ public class ContactBook {
         contacts = tmp;
     }
 
+    public boolean existSamePhone() {
+        for (int i = 0; i < counter; i++) {
+            for (int j = i + 1; j < counter; j++ ) {
+                if (contacts[i].equalsNum(contacts[j])) return true;
+            }
+        }
+        return false;
+    }
+
     public void initializeIterator() {
         currentContact = 0;
     }
