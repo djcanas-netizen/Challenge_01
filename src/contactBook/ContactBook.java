@@ -75,7 +75,7 @@ public class ContactBook {
 
     // GN Command
     // returns -1 or the index of the contact with said phone number
-    private int searchIndexByNum(int phone){
+    private Contact searchIndexByNum(int phone){
         int i = 0;
         int result = -1;
         boolean found = false;
@@ -85,7 +85,14 @@ public class ContactBook {
             else
                 i++;
         if (found) result = i;
-        return result;
+
+        if (result != -1) {
+            return contacts[result];
+
+        } else {
+            return null;
+
+        }
     }
 
     private void resize() {
