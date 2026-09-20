@@ -74,6 +74,7 @@ public class ContactBook {
     }
 
     // GN Command
+    // returns -1 or the index of the contact with said phone number
     private int searchIndexByNum(int phone){
         int i = 0;
         int result = -1;
