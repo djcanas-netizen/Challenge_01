@@ -73,11 +73,36 @@ public class ContactBook {
         return result;
     }
 
+    // GN Command
+    // returns -1 or the index of the contact with said phone number
+    private int searchIndexByNum(int phone){
+        int i = 0;
+        int result = -1;
+        boolean found = false;
+        while (i<counter && !found)
+            if (contacts[i].getPhone() == phone)
+                found = true;
+            else
+                i++;
+        if (found) result = i;
+        return result;
+    }
+
     private void resize() {
         Contact tmp[] = new Contact[2*contacts.length];
         for (int i=0;i<counter; i++)
             tmp[i] = contacts[i];
         contacts = tmp;
+    }
+
+    // EP Command
+    public boolean existSamePhone() {
+        for (int i = 0; i < counter; i++) {
+            for (int j = i + 1; j < counter; j++ ) {
+                if (contacts[i].equalsNum(contacts[j])) return true;
+            }
+        }
+        return false;
     }
 
     public void initializeIterator() {
