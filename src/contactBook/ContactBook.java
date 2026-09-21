@@ -106,7 +106,9 @@ public class ContactBook {
     public boolean existSamePhone() {
         for (int i = 0; i < counter; i++) {
             for (int j = i + 1; j < counter; j++ ) {
-                if (contacts[i].equalsNum(contacts[j])) return true;
+                if ( contacts[i].getPhone() == contacts[j].getPhone() ) {
+                    return true;
+                }
             }
         }
         return false;

@@ -30,7 +30,7 @@ public class Main {
     public static final String COMMAND_ERROR = "Unknown command.";
     public static final String PHONE_NOT_EXIST = "Phone number does not exist.";
     public static final String CONTACTS_SAME_NUMBER = "There are contacts that share phone numbers.";
-    public static final String CONTACTS_DIFF_NUMBER = "All contacts have a different phone numbers.";
+    public static final String CONTACTS_DIFF_NUMBER = "All contacts have different phone numbers.";
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -163,12 +163,13 @@ public class Main {
 
     private static void getPhoneByNumber(Scanner in,ContactBook contactBook){
         int phone = in.nextInt();
+        in.nextLine();
         Contact result = contactBook.searchContactByNum(phone);
         if(Objects.equals(result, null)){
             System.out.println(PHONE_NOT_EXIST);
         }
         else{
-            System.out.println(result);
+            System.out.println(result.getName());
         }
 
     }
