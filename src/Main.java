@@ -1,6 +1,7 @@
 import contactBook.Contact;
 import contactBook.ContactBook;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -28,6 +29,8 @@ public class Main {
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
     public static final String PHONE_NOT_EXIST = "Phone number does not exist.";
+    public static final String CONTACTS_SAME_NUMBER = "There are contacts that share phone numbers.";
+    public static final String CONTACTS_DIFF_NUMBER = "All contacts have a different phone numbers.";
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -54,11 +57,14 @@ public class Main {
                 case SET_EMAIL:
                     setEmail(in,cBook);
                     break;
-                case GET_NUMBER:
+                case LIST_CONTACTS:
                     listAllContacts(cBook);
                     break;
+                case GET_NUMBER:
+                    getPhoneByNumber(in,cBook);
+                    break;
                 case EXISTS_PHONE:
-                    listAllContacts(cBook);
+                    hasContact(in,cBook);
                     break;
                 default:
                     System.out.println(COMMAND_ERROR);
@@ -156,7 +162,23 @@ public class Main {
     }
 
     private static void getPhoneByNumber(Scanner in,ContactBook contactBook){
+        int phone = in.nextInt();
+        Contact result = contactBook.searchContactByNum(phone);
+        if(Objects.equals(result, null)){
+            System.out.println(PHONE_NOT_EXIST);
+        }
+        else{
+            System.out.println(result);
+        }
 
     }
-    private static void hasContact(Scanner in, ContactBook cBook)
+    private static void hasContact(ContactBook cBook){
+        if(cBook.existSamePhone()){
+            System.out.println(CONTACTS_SAME_NUMBER);
+        }
+        else{
+            System.out.println(CONTACTS_DIFF_NUMBER);
+        }
+
+    }
 }
