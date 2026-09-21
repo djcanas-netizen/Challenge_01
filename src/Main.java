@@ -64,7 +64,7 @@ public class Main {
                     getPhoneByNumber(in,cBook);
                     break;
                 case EXISTS_PHONE:
-                    hasContact(in,cBook);
+                    hasContact(cBook);
                     break;
                 default:
                     System.out.println(COMMAND_ERROR);
